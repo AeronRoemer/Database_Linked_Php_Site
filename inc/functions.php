@@ -15,7 +15,39 @@ function array_category($catalog,$category) {
     
     asort($output);
     return array_keys($output);
+}  
+
+
+//genre retrieve function
+function genre_array($category = null){
+    $category = strtolower($category);
+    include('connection.php');
+    try {
+        $query = "SELECT genre, category
+        FROM Genres
+        JOIN Genre_Categories
+        ON Genres.genre_id = Genre_Categories.genre_id
+        ";
+        if (!empty($category)){
+            $results = $db->prepare($query . " WHERE LOWER(category) = ? ORDER BY genre;");
+            $results->bindParam(1,$category,PDO::PARAM_STR);
+        } else {
+        $results = $db->prepare($query . " ORDER BY genre;");
+    }
+        $results->execute();
+    }
+    catch (Exception $e){
+        echo "bad query";
+        exit;
+      }
+   $genres = array();
+   //while there is data in a row, fetch it
+   while($row = $results->fetch(PDO::FETCH_ASSOC)){
+    $genres[$row["category"]][] = $row["genre"];
+  }  
+  return $genres;
 }
+
 //optional pagination function with null as default
 function get_catalog_count($category = null){
     //connection to database in other file

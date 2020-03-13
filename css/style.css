@@ -656,6 +656,22 @@ form input[type="submit"] {
     background: #358dce;
     cursor: pointer;
   }
+
+  .search{
+    overflow:auto;
+  }
+  .search form {
+     width:auto;
+     margin:auto;
+     float:right;
+     padding: 6px;
+  }
+  .search form input[type="submit"] {
+    width:auto;
+    padding:6px;
+  }
+  
+
 .page p.message {
     background: #ffeca4;
     border: 1px solid #f16702;
