@@ -39,7 +39,9 @@ if ($total_items > 0){
     
     //limit results when on category
     $limit_results = "";
-    if (!empty($section)){
+    if(!empty($search)){
+        $limit_results = "s=".urlencode(htmlspecialchars($search))."&";
+    } else if (!empty($section)){
         $limit_results = "cat=" . $section. "&";
     }
 
@@ -59,7 +61,9 @@ if ($total_items > 0){
         $pagination .= "<span> $i </span>";
     } else {
         $pagination .= "<a href='catalog.php?";
-        if (!empty($section)){
+        if(!empty($search)){
+            $pagination .= "s=".urlencode(htmlspecialchars($search))."&";
+        } else if (!empty($section)){
             $pagination .= "cat=".$section."&";
                     }
                     $pagination .= "pg=$i'>$i</a> ";
