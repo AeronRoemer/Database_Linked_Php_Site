@@ -10,7 +10,6 @@
 		<div class="wrapper">
 
 			<h1 class="branding-title"><a href="/">Personal Media Library</a></h1>
-
 			<ul class="nav">
                 <li class="books<?php if ($section == "books") { echo " on"; } ?>"><a href="catalog.php?cat=books">Books</a></li>
                 <li class="movies<?php if ($section == "movies") { echo " on"; } ?>"><a href="catalog.php?cat=movies">Movies</a></li>
@@ -24,7 +23,7 @@
     <div class="search">
 	<form method="GET" action="catalog.php">
 	  <label for="s">Search:</label>
-	  <input type="text" name="search" id="s"/>
+	  <input type="text" name="s" id="s"/>
 	  <input type="submit" value="Go">
 	
 	</form>
